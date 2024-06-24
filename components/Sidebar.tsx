@@ -1,14 +1,13 @@
 "use client";
-
 import { sidebarLinks } from "@/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Footer from "./Footer";
 
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname();
-
   return (
     <section className="sidebar">
       <nav className="flex flex-col gap-4">
@@ -25,7 +24,6 @@ const Sidebar = ({ user }: SiderbarProps) => {
         {sidebarLinks.map((item) => {
           const isActive =
             pathname === item.route || pathname.startsWith(`${item.route}/`);
-
           return (
             <Link
               href={item.route}
@@ -50,9 +48,9 @@ const Sidebar = ({ user }: SiderbarProps) => {
         })}
         USER
       </nav>
-      FOOTER
+
+      <Footer user={user} />
     </section>
   );
 };
-
 export default Sidebar;
